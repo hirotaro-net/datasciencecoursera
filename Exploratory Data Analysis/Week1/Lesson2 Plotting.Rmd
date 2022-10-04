@@ -1,0 +1,78 @@
+---
+title: "Lesson2 Plotting"
+author: "Hirotaro Matsumoto"
+date: "2022-10-04"
+output: html_document
+---
+
+## Graphic system
+
+### Base system
+
+#### Example plot
+
+```{r}
+library(datasets)
+data(cars)
+with(cars, plot(speed, dist))
+```
+
+```{r}
+library(datasets)
+hist(airquality$Ozone)
+```
+
+```{r}
+library(datasets)
+with(airquality, plot(Wind, Ozone))
+```
+
+```{r}
+library(datasets)
+airquality <- transform(airquality, Month = factor(Month))
+boxplot(Ozone ~ Month, airquality, xlab = "Month", ylab = "Ozone (ppb)")
+```
+
+#### Parameter
+
+-   pch
+
+-   lty
+
+-   lwd
+
+-   col
+
+-   xlab
+
+-   ylab
+
+#### par() function parameter
+
+-   las
+
+-   bg
+
+-   mar
+
+-   oma
+
+-   mfrow
+
+-   mfcol
+
+### Lattice system
+
+```{r}
+library(lattice)
+state <- data.frame(state.x77, region = state.region)
+xyplot(Life.Exp ~ Income | region, data = state, layout = c(4, 1))
+```
+
+### ggplot2 system
+
+```{r}
+library(ggplot2)
+data(mpg)
+qplot(displ, hwy, data = mpg)
+```
